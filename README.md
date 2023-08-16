@@ -2,6 +2,7 @@ The goal is to create a complex app called HappyFace for customers who want to d
 
 Done:
 - Sign in with email (createUser, getAuthenticatedUser, signIn, signOut, sendPasswordReset)
+  
 Left:
 - Sign in with Google
 - Sign in with Apple
