@@ -8,7 +8,6 @@ Left:
 - Sign in with Apple
 - Sign in anonymously
 - Firestore
-- Setting up user profile in Firebase Firestore
 - Queries
 - Pagination
 - Firebase storage
