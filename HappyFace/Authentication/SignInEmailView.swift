@@ -33,6 +33,7 @@ final class SignInEmailViewModel: ObservableObject {
 
 struct SignInEmailView: View {
     @StateObject private var viewModel = SignInEmailViewModel()
+    @Binding var canChangeEmailDetails: Bool
     @Binding var showSignInView: Bool
     
     var body: some View {
@@ -49,12 +50,21 @@ struct SignInEmailView: View {
                 .background(.gray.opacity(0.4))
                 .cornerRadius(10)
             
-            // MARK: TEMPORARY SINGLE BUTTON FOR TESTING
             Button {
                 Task {
                     do {
                         try await viewModel.signUp()
                         showSignInView = false
+                        
+                        await MainActor.run {
+                            canChangeEmailDetails = true
+                        }
+                        
+                        try await Task.sleep(nanoseconds: UInt64(60) * NSEC_PER_SEC)
+                        await MainActor.run {
+                            canChangeEmailDetails = false
+                        }
+                        
                         return
                     } catch {
                         print(error)
@@ -62,6 +72,16 @@ struct SignInEmailView: View {
                     do {
                         try await viewModel.signIn()
                         showSignInView = false
+                        
+                        await MainActor.run {
+                            canChangeEmailDetails = true
+                        }
+                        
+                        try await Task.sleep(nanoseconds: UInt64(60) * NSEC_PER_SEC)
+                        await MainActor.run {
+                            canChangeEmailDetails = false
+                        }
+                        
                         return
                     } catch {
                         print(error)
@@ -87,7 +107,7 @@ struct SignInEmailView: View {
 struct SignInEmailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SignInEmailView(showSignInView: .constant(false))
+            SignInEmailView(canChangeEmailDetails: .constant(false), showSignInView: .constant(false))
         }
     }
 }
