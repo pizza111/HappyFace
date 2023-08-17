@@ -1,7 +1,7 @@
 The goal is to create a complex app called HappyFace for customers who want to do online shopping. It will be written in SwiftUI with a very strong integration of Firebase, including features such as:
 
 Done:
-- Sign in with email (.createUser, .signIn, .signOut, .currentUser, .sendPasswordReset)
+- Sign in with email (.createUser, .signIn, .signOut, .sendPasswordReset, .updateEmail)
   
 Left:
 - Sign in with Google
