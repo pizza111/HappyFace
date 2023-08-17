@@ -48,6 +48,14 @@ final class AuthenticationManager {
         try await Auth.auth().sendPasswordReset(withEmail: email)
     }
     
+    func updateEmail(email: String) async throws {
+        guard let user = Auth.auth().currentUser else {
+            throw URLError(.badServerResponse)
+        }
+        
+        try await user.updateEmail(to: email)
+    }
+    
     func signOut() throws {
         try Auth.auth().signOut()
     }
