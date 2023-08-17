@@ -9,11 +9,12 @@ import SwiftUI
 
 struct RootView: View {
     @State private var showSignInView: Bool = false
+    @State private var canChangeEmailDetails: Bool = false
     
     var body: some View {
         ZStack {
             NavigationStack {
-                SettingsView(showSigningView: $showSignInView)
+                SettingsView(canChangeEmailDetails: $canChangeEmailDetails, showSigningView: $showSignInView)
             }
         }
         .onAppear {
@@ -22,7 +23,7 @@ struct RootView: View {
         }
         .fullScreenCover(isPresented: $showSignInView) {
             NavigationStack {
-                AuthenticationView(showSignInView: $showSignInView)
+                AuthenticationView(canChangeEmailDetails: $canChangeEmailDetails, showSignInView: $showSignInView)
             }
         }
     }
