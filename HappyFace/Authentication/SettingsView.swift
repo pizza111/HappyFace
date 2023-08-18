@@ -7,10 +7,13 @@
 
 import SwiftUI
 
-@MainActor
 final class SettingsViewModel: ObservableObject {
+    @Published var triggerEmailPasswordUpdate = false
     @Published var triggerEmailUpdate = false
+    @Published var wrongNewPassword = false
     
+    @Published var newPassword = ""
+    @Published var repeatNewPassword = ""
     @Published var newEmail = ""
     
     func signOut() throws {
@@ -25,6 +28,16 @@ final class SettingsViewModel: ObservableObject {
         try await AuthenticationManager.shared.resetPassword(email: email)
     }
     
+    func updatePassword() async throws {
+        guard !newPassword.isEmpty else { return }
+        
+        if newPassword == repeatNewPassword {
+            try await AuthenticationManager.shared.updatePassword(password: newPassword)
+        } else {
+            wrongNewPassword = true
+        }
+    }
+    
     func updateEmail() async throws {
         guard !newEmail.isEmpty else { return }
         
@@ -32,7 +45,6 @@ final class SettingsViewModel: ObservableObject {
     }
 }
 
-@MainActor
 struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
     
@@ -54,6 +66,42 @@ struct SettingsView: View {
                     }
                 }
             }
+        }
+        .alert("Wrong new password", isPresented: $viewModel.wrongNewPassword) {
+            Button("OK") {
+                viewModel.newPassword = ""
+                viewModel.repeatNewPassword = ""
+            }
+        }
+        .alert(canChangeEmailDetails ? "" : "Oops!", isPresented: $viewModel.triggerEmailPasswordUpdate) {
+            if canChangeEmailDetails {
+                SecureField("New password", text: $viewModel.newPassword)
+                SecureField("Repeat new password", text: $viewModel.repeatNewPassword)
+                
+                Button("Update password") {
+                    if viewModel.newPassword == viewModel.repeatNewPassword {
+                        Task {
+                            do {
+                                try await viewModel.updatePassword()
+                                showSigningView = true
+                                print("password updated!")
+                            } catch {
+                                print(error)
+                            }
+                        }
+                    } else {
+                        viewModel.wrongNewPassword = true
+                    }
+                }
+                Button("Cancel", role: .cancel) {
+                    viewModel.newPassword = ""
+                    viewModel.repeatNewPassword = ""
+                }
+            } else {
+                Button("OK") { }
+            }
+        } message: {
+            Text(canChangeEmailDetails ? "" : "First, you have to log out in order to update the password")
         }
         .alert(canChangeEmailDetails ? "" : "Oops!", isPresented: $viewModel.triggerEmailUpdate) {
             if canChangeEmailDetails {
@@ -94,6 +142,7 @@ extension SettingsView {
                     }
                 }
             }
+            Button("Update password") { viewModel.triggerEmailPasswordUpdate = true }
             Button("Update email") { viewModel.triggerEmailUpdate = true }
         } header: {
             Text("Email functions")
