@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B41174FB2A964B680026C3CB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41174FA2A964B680026C3CB /* Utilities.swift */; };
 		B42CD7472A95E03700281C29 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B42CD7462A95E03700281C29 /* GoogleSignIn */; };
 		B42CD7492A95E03700281C29 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B42CD7482A95E03700281C29 /* GoogleSignInSwift */; };
 		B475F91E2A7D5DF8007DAA03 /* HappyFaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475F91D2A7D5DF8007DAA03 /* HappyFaceApp.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B41174FA2A964B680026C3CB /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B42CD74A2A95F0EE00281C29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B475F91A2A7D5DF8007DAA03 /* HappyFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B475F91D2A7D5DF8007DAA03 /* HappyFaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyFaceApp.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B41174F92A964B540026C3CB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B41174FA2A964B680026C3CB /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		B475F9112A7D5DF8007DAA03 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 				B42CD74A2A95F0EE00281C29 /* Info.plist */,
 				B475F91D2A7D5DF8007DAA03 /* HappyFaceApp.swift */,
 				B475F91F2A7D5DF8007DAA03 /* ContentView.swift */,
+				B41174F92A964B540026C3CB /* Utilities */,
 				B475F9572A811557007DAA03 /* Authentication */,
 				B475F94D2A80E224007DAA03 /* GoogleService-Info.plist */,
 				B475F9212A7D5DF9007DAA03 /* Assets.xcassets */,
@@ -201,6 +212,7 @@
 				B475F95F2A815527007DAA03 /* RootView.swift in Sources */,
 				B475F9592A81157D007DAA03 /* AuthenticationView.swift in Sources */,
 				B475F95D2A8129E2007DAA03 /* AuthenticationManage.swift in Sources */,
+				B41174FB2A964B680026C3CB /* Utilities.swift in Sources */,
 				B475F95B2A811895007DAA03 /* SignInEmailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
