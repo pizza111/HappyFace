@@ -10,6 +10,7 @@
 		B41174FB2A964B680026C3CB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41174FA2A964B680026C3CB /* Utilities.swift */; };
 		B42CD7472A95E03700281C29 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B42CD7462A95E03700281C29 /* GoogleSignIn */; };
 		B42CD7492A95E03700281C29 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B42CD7482A95E03700281C29 /* GoogleSignInSwift */; };
+		B434704C2A9A45C000F4CC1F /* SignInGoogleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434704B2A9A45C000F4CC1F /* SignInGoogleHelper.swift */; };
 		B475F91E2A7D5DF8007DAA03 /* HappyFaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475F91D2A7D5DF8007DAA03 /* HappyFaceApp.swift */; };
 		B475F9202A7D5DF8007DAA03 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475F91F2A7D5DF8007DAA03 /* ContentView.swift */; };
 		B475F9222A7D5DF9007DAA03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B475F9212A7D5DF9007DAA03 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		B41174FA2A964B680026C3CB /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B42CD74A2A95F0EE00281C29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B434704B2A9A45C000F4CC1F /* SignInGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInGoogleHelper.swift; sourceTree = "<group>"; };
 		B475F91A2A7D5DF8007DAA03 /* HappyFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B475F91D2A7D5DF8007DAA03 /* HappyFaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyFaceApp.swift; sourceTree = "<group>"; };
 		B475F91F2A7D5DF8007DAA03 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				B475F95A2A811895007DAA03 /* SignInEmailView.swift */,
 				B475F9602A8167AE007DAA03 /* SettingsView.swift */,
 				B475F95C2A8129E2007DAA03 /* AuthenticationManage.swift */,
+				B434704B2A9A45C000F4CC1F /* SignInGoogleHelper.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				B475F9202A7D5DF8007DAA03 /* ContentView.swift in Sources */,
 				B475F91E2A7D5DF8007DAA03 /* HappyFaceApp.swift in Sources */,
 				B475F95F2A815527007DAA03 /* RootView.swift in Sources */,
+				B434704C2A9A45C000F4CC1F /* SignInGoogleHelper.swift in Sources */,
 				B475F9592A81157D007DAA03 /* AuthenticationView.swift in Sources */,
 				B475F95D2A8129E2007DAA03 /* AuthenticationManage.swift in Sources */,
 				B41174FB2A964B680026C3CB /* Utilities.swift in Sources */,
