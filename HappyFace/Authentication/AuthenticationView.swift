@@ -8,28 +8,14 @@
 import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
-import FirebaseAuth
-
-struct GoogleSignInResultModel {
-    let idToken: String
-    let accessToken: String
-}
 
 final class AuthenticationViewModel: ObservableObject {
     
+    
     func signInGoogle() async throws {
-        guard let topVC = await Utilities.shared.topViewController() else {
-            throw URLError(.cannotFindHost)
-        }
+        let helper = SignInGoogleHelper()
+        let tokens = try await helper.signIn()
         
-        let gidSigningResult = try await GIDSignIn.sharedInstance.signIn(withPresenting: topVC)
-        
-        guard let idToken = gidSigningResult.user.idToken?.tokenString else {
-            throw URLError(.badServerResponse)
-        }
-        let accessToken = gidSigningResult.user.accessToken.tokenString
-        
-        let tokens = GoogleSignInResultModel(idToken: idToken, accessToken: accessToken)
         try await AuthenticationManager.shared.signInWithGoogle(tokens: tokens)
     }
 }
