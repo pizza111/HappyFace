@@ -13,8 +13,10 @@ struct RootView: View {
     
     var body: some View {
         ZStack {
-            NavigationStack {
-                SettingsView(canChangeEmailDetails: $canChangeEmailDetails, showSigningView: $showSignInView)
+            if !showSignInView {
+                NavigationStack {
+                    SettingsView(canChangeEmailDetails: $canChangeEmailDetails, showSigningView: $showSignInView)
+                }
             }
         }
         .onAppear {
