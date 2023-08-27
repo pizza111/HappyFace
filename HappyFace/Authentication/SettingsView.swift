@@ -16,6 +16,14 @@ final class SettingsViewModel: ObservableObject {
     @Published var repeatNewPassword = ""
     @Published var newEmail = ""
     
+    @Published var authProviders: [AuthProviderOption] = []
+
+    func loadAuthProviders() {
+        if let providers = try? AuthenticationManager.shared.getProviders() {
+            authProviders = providers
+        }
+    }
+    
     func signOut() throws {
         try AuthenticationManager.shared.signOut()
     }
@@ -53,7 +61,9 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            emailSection
+            if viewModel.authProviders.contains(.email) {
+                emailSection
+            }
             
             Button("Log out"){
                 Task {
@@ -125,6 +135,9 @@ struct SettingsView: View {
             Text(canChangeEmailDetails ? "" : "First, you have to log out in order to update the password")
         }
         .navigationTitle("Settings")
+        .onAppear {
+            viewModel.loadAuthProviders()
+        }
     }
 }
 
