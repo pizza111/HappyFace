@@ -14,7 +14,9 @@ struct HappyFaceApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                RootView()
+            }
         }
     }
 }
