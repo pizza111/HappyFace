@@ -8,6 +8,21 @@
 import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
+import AuthenticationServices
+
+struct SignInWithAppleButtonViewRepresentable: UIViewRepresentable {
+    
+    let type: ASAuthorizationAppleIDButton.ButtonType
+    let style: ASAuthorizationAppleIDButton.Style
+    
+    func makeUIView(context: Context) -> ASAuthorizationAppleIDButton {
+        return ASAuthorizationAppleIDButton(authorizationButtonType: type, authorizationButtonStyle: style)
+    }
+    
+    func updateUIView(_ uiView: ASAuthorizationAppleIDButton, context: Context) {
+        
+    }
+}
 
 final class AuthenticationViewModel: ObservableObject {
     
@@ -50,6 +65,14 @@ struct AuthenticationView: View {
                     }
                 }
             }
+            
+            Button {
+                
+            } label: {
+                SignInWithAppleButtonViewRepresentable(type: .default, style: .black)
+                    .allowsHitTesting(false)
+            }
+            .frame(height: 55)
             
             Spacer()
         }
